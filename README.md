@@ -3,5 +3,5 @@
 Public installer endpoint for Atelier.
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/lucasmeijer/atelier-install/main/install.sh | sudo bash
+curl -fsSL https://github.com/lucasmeijer/atelier-install/releases/latest/download/install.sh | sudo bash
 ```

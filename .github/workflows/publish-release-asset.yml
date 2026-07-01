@@ -1,0 +1,26 @@
+name: Publish release asset
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Publish install.sh release asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -eux
+          if ! gh release view installer >/dev/null 2>&1; then
+            gh release create installer --title "Installer" --notes "Current public Atelier installer." --latest
+          fi
+          gh release upload installer install.sh --clobber
